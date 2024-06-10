@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Movie web</title>
+   <!--=============== CSS ===============-->
+   <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+   <!--==================== HEADER ====================-->
+   <%- include('partial/header.ejs') %>
+
+      <!--==================== DASHBOARD ====================-->
+      <main class="main" style="margin-top: 150px;">
+         <div class="container">
+            <div class="row  gap">
+               <% data.map((val)=>{
+                  let {name,image,rating,dsc,_id}=val
+               %>
+               <div class="movie-card">
+                  <img src="<%= image %>"alt="Movie Poster">
+                  <div class="movie-info">
+                     <h2 class="movie-title"><%= name %></h2>
+                     <p class="movie-description"><%= dsc %>.</p>
+                     <p class="movie-rating">Rating: <span><%= rating %></span></p>
+                     <div class="action">
+                        <a href="/editMovie<%= _id %>" class="edit"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="/deleteMovie<%= _id %>" class="delete"><i class="bi bi-trash3-fill"></i></a>
+                     </div>
+                  </div>
+               </div>
+               <% }) %>
+            </div>
+         </div>
+
+      </main>
+
+      <!--=============== SWIPER JS ===============-->
+
+      <!--=============== MAIN JS ===============-->
+</body>
+
+</html>
